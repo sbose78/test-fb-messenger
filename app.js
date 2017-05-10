@@ -288,8 +288,14 @@ function receivedMessage(event) {
 
       printAllUsersData();
       updateUserData(recipientID,payloadJSON.key,payloadJSON.value);
-      
-    sendTextMessage(senderID, "Quick reply tapped");
+      sendTextMessage(senderID, "Quick reply tapped");
+
+      var nextStageFunc = getNextStage(payloadJSON.current_stage);
+      if (nextStageFunc!=undefined)
+      {
+        nextStageFunc(recipientID);
+      }
+
     return;
   }
 
@@ -818,8 +824,28 @@ function sendTypingOff(recipientId) {
   callSendAPI(messageData);
 }
 
-function generatePayloadString(key,value){
-  return JSON.stringify({"key":key,"value":value});
+function generatePayloadString(currentStage,key,value){
+  return JSON.stringify({ "current_stage":currentStage, "key":key,"value":value});
+}
+
+/* 
+
+Stage tracker 
+
+*/
+
+const STAGE_1="1"
+const STAGE_2="2"
+
+var stages = {
+  STAGE_1: sendInsuranceOptions,
+  STAGE_2: sendRefundOptions
+}
+
+function getNextStage(currentStage) {
+  var cStage = parseInt(currentStage) + 1;
+  var nextStageFunction = stages[cStage.toString()];
+  return nextStageFunction
 }
 
 /*
@@ -901,7 +927,7 @@ function sendInsuranceOptions(recipientId){
       ]
     }
   };
-  callSendAPI(messageData,sendRefundOptions);
+  callSendAPI(messageData);
 }
 
 /*
