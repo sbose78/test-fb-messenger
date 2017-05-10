@@ -309,6 +309,7 @@ function receivedMessage(event) {
 
       case 'i want to buy':
         sendInsuranceOptions(senderID);
+        break;
 
       default:
         sendTextMessage(senderID, messageText);
