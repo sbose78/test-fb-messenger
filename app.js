@@ -88,7 +88,7 @@ var questionSequence = {
 
 function printAllUsersData(){
     Object.keys(datastore).forEach(function(key) {
-      value = datastore[key];
+      var value = datastore[key];
       console.log(key)
       Object.keys(datastore).forEach(function(customerProperty){
         console.log(customerProperty);
@@ -99,7 +99,7 @@ function printAllUsersData(){
 }
 
 function updateUserData(userid,key,value){
-   userobject = datastore[userid]
+   var userobject = datastore[userid]
    userobject.key = value
    datastore[userid] = userobject
 }
