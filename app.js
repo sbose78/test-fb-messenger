@@ -74,6 +74,9 @@ app.get('/webhook', function(req, res) {
 
 const TYPE_OF_INSURANCE='type_of_insurance'
 const DOB='dob'
+const NEED_MONEY_BACK='need_money_back'
+const YES='yes'
+const NO='no'
 
 var datastore = {
   "someid":{
@@ -815,6 +818,40 @@ function sendTypingOff(recipientId) {
   callSendAPI(messageData);
 }
 
+function generatePayloadString(key,value){
+  return JSON.stringify({"key":key,"value":value});
+}
+
+/*
+
+  Send options for moneyback
+
+*/
+
+function sendRefundOptions(recipientID){
+
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: "Would you like your money back ?",
+      quick_replies: [
+        {
+          "content_type":"text",
+          "title":"Yes",
+          "payload": generatePayloadString(NEED_MONEY_BACK,YES)
+        },
+         {
+          "content_type":"text",
+          "title":"No",
+          "payload": generatePayloadString(NEED_MONEY_BACK,NO)
+        }
+      ]
+    }
+  };
+  callSendAPI(messageData);
+}
 
 /*
     Send options for insurance
@@ -864,7 +901,7 @@ function sendInsuranceOptions(recipientId){
       ]
     }
   };
-  callSendAPI(messageData);
+  callSendAPI(messageData,sendRefundOptions);
 }
 
 /*
@@ -909,19 +946,19 @@ function callSendAPI(messageData,next) {
   }, function (error, response, body) {
      var recipientId = body.recipient_id;
     if (!error && response.statusCode == 200) {
-      var messageId = body.message_id;
+          var messageId = body.message_id;
 
-      if (messageId) {
-        console.log("Successfully sent message with id %s to recipient %s", 
-          messageId, recipientId);
-      } else {
-      console.log("Successfully called Send API for recipient %s", 
-        recipientId);
-      }
+          if (messageId) {
+            console.log("Successfully sent message with id %s to recipient %s", 
+              messageId, recipientId);
+          } else {
+          console.log("Successfully called Send API for recipient %s", 
+            recipientId);
+          }
 
-    if ( next != undefined ){
-      next(receiptId);
-    }
+          if ( next != undefined ){
+            next(recipientId);
+          }
 
     } else {
       console.error("Failed calling Send API", response.statusCode, response.statusMessage, body.error);
