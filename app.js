@@ -693,7 +693,7 @@ function sendReceiptMessage(recipientId) {
  *
  */
 function sendQuickReply(recipientId) {
-  var messageData = {
+  var messageData = { 
     recipient: {
       id: recipientId
     },
@@ -779,7 +779,7 @@ function sendTypingOff(recipientId) {
 */
 
 
-function sendInsuranceOptions(recipient_id){
+function sendInsuranceOptions(recipientId){
   var messageData = {
     recipient: {
       id: recipientId
