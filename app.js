@@ -879,7 +879,7 @@ function getStageProcessor(current_stage){
   var stages = getAllStages();
   console.log(current_stage)
   var stageInfo= stages[current_stage];
-  var stageFunction = nextStageInfo["process"]
+  var stageFunction = stageInfo["process"]
   console.log(stageFunction);
   console.log("Computed stage processor");
   return stageFunction;
