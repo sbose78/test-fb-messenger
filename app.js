@@ -829,9 +829,6 @@ function sendInsuranceOptions(recipientId){
   var payloadVehicle = JSON.stringify({"key":"type_of_insurance","value":"vehicle"});
   var payloadTravel = JSON.stringify({"key":"type_of_insurance","value":"travel"});
 
-
-
-
   var messageData = {
     recipient: {
       id: recipientId
@@ -868,7 +865,6 @@ function sendInsuranceOptions(recipientId){
     }
   };
   callSendAPI(messageData);
-
 }
 
 /*
@@ -903,7 +899,7 @@ function sendAccountLinking(recipientId) {
  * get the message id in a response 
  *
  */
-function callSendAPI(messageData) {
+function callSendAPI(messageData,next) {
   request({
     uri: 'https://graph.facebook.com/v2.6/me/messages',
     qs: { access_token: PAGE_ACCESS_TOKEN },
@@ -911,8 +907,8 @@ function callSendAPI(messageData) {
     json: messageData
 
   }, function (error, response, body) {
+     var recipientId = body.recipient_id;
     if (!error && response.statusCode == 200) {
-      var recipientId = body.recipient_id;
       var messageId = body.message_id;
 
       if (messageId) {
@@ -922,10 +918,16 @@ function callSendAPI(messageData) {
       console.log("Successfully called Send API for recipient %s", 
         recipientId);
       }
+
+    if ( next != undefined ){
+      next(receiptId);
+    }
+
     } else {
       console.error("Failed calling Send API", response.statusCode, response.statusMessage, body.error);
     }
-  });  
+  }
+  );  
 }
 
 // Start server
