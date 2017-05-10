@@ -816,6 +816,8 @@ function sendInsuranceOptions(recipientId){
       ]
     }
   };
+  callSendAPI(messageData);
+
 }
 
 /*
