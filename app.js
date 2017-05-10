@@ -845,7 +845,8 @@ var stages = {
 function getNextStage(currentStage) {
   var cStage = parseInt(currentStage) + 1;
   var nextStageFunction = stages[cStage.toString()];
-  return nextStageFunction
+  console.log("Computed next stage");
+  return nextStageFunction;
 }
 
 /*
@@ -866,12 +867,12 @@ function sendRefundOptions(recipientID){
         {
           "content_type":"text",
           "title":"Yes",
-          "payload": generatePayloadString(NEED_MONEY_BACK,YES)
+          "payload": generatePayloadString(STAGE_2,NEED_MONEY_BACK,YES)
         },
          {
           "content_type":"text",
           "title":"No",
-          "payload": generatePayloadString(NEED_MONEY_BACK,NO)
+          "payload": generatePayloadString(STAGE_2,NEED_MONEY_BACK,NO)
         }
       ]
     }
