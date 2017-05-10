@@ -957,6 +957,7 @@ function callSendAPI(messageData,next) {
           }
 
           if ( next != undefined ){
+            console.log("Calling next ....")
             next(recipientId);
           }
 
