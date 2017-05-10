@@ -82,6 +82,27 @@ var datastore = {
   }
 }
 
+var questionSequence = {
+  
+}
+
+function printAllUsersData(){
+    Object.keys(datastore).forEach(function(key) {
+      value = datastore[key];
+      console.log(key)
+      Object.keys(datastore).forEach(function(customerProperty){
+        console.log(customerProperty);
+        console.log(value[customerProperty]);
+      });
+      console.log(value);
+  });
+}
+
+function updateUserData(userid,key,value){
+   userobject = datastore[userid]
+   userobject.key = value
+   datastore[userid] = userobject
+}
 
 /*
  * All callbacks for Messenger are POST-ed. They will be sent to the same
@@ -254,9 +275,13 @@ function receivedMessage(event) {
     var quickReplyPayload = quickReply.payload;
     var payloadJSON = JSON.parse(quickReplyPayload.replace(/'/g,'"'));
 
+
     console.log("Quick reply for message %s with payload %s",
       messageId, payloadJSON.value);
 
+      printAllUsersData();
+      updateUserData(recipientID,payloadJSON.key,payloadJSON.value);
+      
     sendTextMessage(senderID, "Quick reply tapped");
     return;
   }
