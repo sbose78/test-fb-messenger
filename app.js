@@ -307,6 +307,9 @@ function receivedMessage(event) {
         sendAccountLinking(senderID);
         break;
 
+      case 'hi':
+        sendInsuranceOptions(senderID);
+
       default:
         sendTextMessage(senderID, messageText);
     }
@@ -768,6 +771,50 @@ function sendTypingOff(recipientId) {
   };
 
   callSendAPI(messageData);
+}
+
+
+/*
+    Send options for insurance
+*/
+
+
+function sendInsuranceOptions(recipient_id){
+  var messageData = {
+    recipient: {
+      id: recipientId
+    },
+    message: {
+      text: "What would you like to insure today ?",
+      quick_replies: [
+        {
+          "content_type":"text",
+          "title":"Life",
+          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_ACTION"
+        },
+        {
+          "content_type":"text",
+          "title":"Product",
+          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_COMEDY"
+        },
+        {
+          "content_type":"text",
+          "title":"Home",
+          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_DRAMA"
+        },
+        {
+          "content_type":"text",
+          "title":"Vehicle",
+          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_ACTION"
+        },
+        {
+          "content_type":"text",
+          "title":"Travel",
+          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_COMEDY"
+        }
+      ]
+    }
+  };
 }
 
 /*
