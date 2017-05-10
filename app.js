@@ -847,10 +847,10 @@ var stages = {
 }
 
 function getNextStage(currentStage) {
-  var cStage = parseInt(currentStage) + 1;
+  var cStage = (parseInt(currentStage) + 1).toString();
   console.log(cStage)
-  var nextStageFunction = stages[cStage.toString()];
-  console.log(nextStageFunction)
+  var nextStageFunction = stages[cStage];
+  console.log(nextStageFunction);
   console.log("Computed next stage");
   return nextStageFunction;
 }
