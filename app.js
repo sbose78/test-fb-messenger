@@ -307,7 +307,7 @@ function receivedMessage(event) {
         sendAccountLinking(senderID);
         break;
 
-      case 'hi':
+      case 'i want to buy':
         sendInsuranceOptions(senderID);
 
       default:
