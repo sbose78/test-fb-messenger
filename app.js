@@ -824,6 +824,11 @@ function sendTypingOff(recipientId) {
 function sendInsuranceOptions(recipientId){
 
   var payloadProduct = JSON.stringify({"key":"type_of_insurance","value":"life"});
+  var payloadProduct = JSON.stringify({"key":"type_of_insurance","value":"product"});
+  var payloadProduct = JSON.stringify({"key":"type_of_insurance","value":"home"});
+  var payloadProduct = JSON.stringify({"key":"type_of_insurance","value":"vehicle"});
+  var payloadProduct = JSON.stringify({"key":"type_of_insurance","value":"travel"});
+
 
 
 
