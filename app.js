@@ -91,7 +91,7 @@ function printAllUsersData(){
     Object.keys(datastore).forEach(function(key) {
       var value = datastore[key];
       console.log(key)
-      Object.keys(datastore).forEach(function(customerProperty){
+      Object.keys(value).forEach(function(customerProperty){
         console.log(customerProperty);
         console.log(value[customerProperty]);
       });
