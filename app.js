@@ -294,7 +294,7 @@ function receivedMessage(event) {
       if (nextStageFunc!=undefined)
       {
         console.log("Next stage being executed....")
-        nextStageFunc(recipientID);
+        nextStageFunc(senderID);
       }
       else{
         console.log("next stage not executed");
