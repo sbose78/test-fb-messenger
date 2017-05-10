@@ -87,6 +87,7 @@ var questionSequence = {
 }
 
 function printAllUsersData(){
+    console.log("*** ALL USER DATA ***");
     Object.keys(datastore).forEach(function(key) {
       var value = datastore[key];
       console.log(key)
