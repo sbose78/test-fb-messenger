@@ -839,10 +839,10 @@ Stage tracker
 */
 
 
+const STAGE_1="1"
+const STAGE_2="2"
 
 function getNextStage(currentStage) {
-    const STAGE_1="1"
-    const STAGE_2="2"
 
     var stages = {
       STAGE_1: sendInsuranceOptions,
