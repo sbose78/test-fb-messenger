@@ -252,7 +252,7 @@ function receivedMessage(event) {
     return;
   } else if (quickReply) {
     var quickReplyPayload = quickReply.payload;
-    var payloadJSON = JSON.parse(quickReplyPayload);
+    var payloadJSON = JSON.parse(quickReplyPayload.replace(/'/g,'"'));
 
     console.log("Quick reply for message %s with payload %s",
       messageId, payloadJSON.value);
