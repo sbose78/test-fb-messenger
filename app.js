@@ -293,7 +293,11 @@ function receivedMessage(event) {
       var nextStageFunc = getNextStage(payloadJSON.current_stage);
       if (nextStageFunc!=undefined)
       {
+        console.log("Next stage being executed....")
         nextStageFunc(recipientID);
+      }
+      else{
+        console.log("next stage not executed");
       }
 
     return;
