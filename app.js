@@ -100,7 +100,7 @@ function printAllUsersData(){
 
 function updateUserData(userid,key,value){
    var userobject = datastore[userid]
-   userobject.key = value
+   userobject[key] = value
    datastore[userid] = userobject
 }
 
