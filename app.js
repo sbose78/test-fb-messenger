@@ -823,11 +823,11 @@ function sendTypingOff(recipientId) {
 
 function sendInsuranceOptions(recipientId){
 
-  var payloadProduct = JSON.stringify({"key":"type_of_insurance","value":"life"});
+  var payloadlife = JSON.stringify({"key":"type_of_insurance","value":"life"});
   var payloadProduct = JSON.stringify({"key":"type_of_insurance","value":"product"});
-  var payloadProduct = JSON.stringify({"key":"type_of_insurance","value":"home"});
-  var payloadProduct = JSON.stringify({"key":"type_of_insurance","value":"vehicle"});
-  var payloadProduct = JSON.stringify({"key":"type_of_insurance","value":"travel"});
+  var payloadHome = JSON.stringify({"key":"type_of_insurance","value":"home"});
+  var payloadVehicle = JSON.stringify({"key":"type_of_insurance","value":"vehicle"});
+  var payloadTravel = JSON.stringify({"key":"type_of_insurance","value":"travel"});
 
 
 
@@ -842,7 +842,7 @@ function sendInsuranceOptions(recipientId){
         {
           "content_type":"text",
           "title":"Life",
-          "payload":payloadProduct
+          "payload":payloadlife
         },
         {
           "content_type":"text",
@@ -852,17 +852,17 @@ function sendInsuranceOptions(recipientId){
         {
           "content_type":"text",
           "title":"Home",
-          "payload":payloadProduct
+          "payload":payloadHome
         },
         {
           "content_type":"text",
           "title":"Vehicle",
-          "payload":payloadProduct
+          "payload":payloadVehicle
         },
         {
           "content_type":"text",
           "title":"Travel",
-          "payload":payloadProduct
+          "payload":payloadTravel
         }
       ]
     }
