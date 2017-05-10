@@ -72,6 +72,16 @@ app.get('/webhook', function(req, res) {
   }  
 });
 
+const TYPE_OF_INSURANCE='type_of_insurance'
+const DOB='dob'
+
+var datastore = {
+  "someid":{
+    TYPE_OF_INSURANCE:"travel",
+    DOB:"07/08/1990"
+  }
+}
+
 
 /*
  * All callbacks for Messenger are POST-ed. They will be sent to the same
@@ -242,8 +252,10 @@ function receivedMessage(event) {
     return;
   } else if (quickReply) {
     var quickReplyPayload = quickReply.payload;
+    var payloadJSON = JSON.parse(quickReplyPayload);
+
     console.log("Quick reply for message %s with payload %s",
-      messageId, quickReplyPayload);
+      messageId, payloadJSON.value);
 
     sendTextMessage(senderID, "Quick reply tapped");
     return;
@@ -791,27 +803,27 @@ function sendInsuranceOptions(recipientId){
         {
           "content_type":"text",
           "title":"Life",
-          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_ACTION"
+          "payload":"{'key':'type_of_insurance','value':'life'}"
         },
         {
           "content_type":"text",
           "title":"Product",
-          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_COMEDY"
+          "payload":"{'key':'type_of_insurance','value':'product'}"
         },
         {
           "content_type":"text",
           "title":"Home",
-          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_DRAMA"
+          "payload":"{'key':'type_of_insurance','value':'home'}"
         },
         {
           "content_type":"text",
           "title":"Vehicle",
-          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_ACTION"
+          "payload":"{'key':'type_of_insurance','value':'vehicle'}"
         },
         {
           "content_type":"text",
           "title":"Travel",
-          "payload":"DEVELOPER_DEFINED_PAYLOAD_FOR_PICKING_COMEDY"
+          "payload":"{'key':'type_of_insurance','value':'travel'}"
         }
       ]
     }
@@ -885,4 +897,5 @@ app.listen(app.get('port'), function() {
 });
 
 module.exports = app;
+
 
