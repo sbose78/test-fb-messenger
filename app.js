@@ -838,15 +838,17 @@ Stage tracker
 
 */
 
-const STAGE_1="1"
-const STAGE_2="2"
 
-var stages = {
-  STAGE_1: sendInsuranceOptions,
-  STAGE_2: sendRefundOptions
-}
 
 function getNextStage(currentStage) {
+    const STAGE_1="1"
+    const STAGE_2="2"
+
+    var stages = {
+      STAGE_1: sendInsuranceOptions,
+      STAGE_2: sendRefundOptions
+    }
+
   var cStage = (parseInt(currentStage) + 1).toString();
   console.log(cStage)
   var nextStageFunction = stages[cStage];
