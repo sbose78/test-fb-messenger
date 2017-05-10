@@ -803,27 +803,27 @@ function sendInsuranceOptions(recipientId){
         {
           "content_type":"text",
           "title":"Life",
-          "payload":"{\"key\":\"type_of_insurance\",\"value\":\"life\"\"}"
+          "payload":"{key:\"type_of_insurance\",value:\"life\"}"
         },
         {
           "content_type":"text",
           "title":"Product",
-          "payload":"{\"key\":\"type_of_insurance\",\"value\":\"Product\"\"}"
+          "payload":"{key:\"type_of_insurance\",value:\"life\"}"
         },
         {
           "content_type":"text",
           "title":"Home",
-          "payload":"{\"key\":\"type_of_insurance\",\"value\":\"Home\"\"}"
+          "payload":"{key:\"type_of_insurance\",value:\"life\"}"
         },
         {
           "content_type":"text",
           "title":"Vehicle",
-          "payload":"{\"key\":\"type_of_insurance\",\"value\":\"Vehicle\"\"}"
+          "payload":"{key:\"type_of_insurance\",value:\"life\"}"
         },
         {
           "content_type":"text",
           "title":"Travel",
-          "payload":"{\"key\":\"type_of_insurance\",\"value\":\"Travel\"\"}"
+          "payload":"{key:\"type_of_insurance\",value:\"life\"}"
         }
       ]
     }
