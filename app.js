@@ -886,11 +886,11 @@ function sendRefundOptions(recipientID){
 
 function sendInsuranceOptions(recipientId){
 
-  var payloadlife = JSON.stringify({"key":"type_of_insurance","value":"life"});
-  var payloadProduct = JSON.stringify({"key":"type_of_insurance","value":"product"});
-  var payloadHome = JSON.stringify({"key":"type_of_insurance","value":"home"});
-  var payloadVehicle = JSON.stringify({"key":"type_of_insurance","value":"vehicle"});
-  var payloadTravel = JSON.stringify({"key":"type_of_insurance","value":"travel"});
+  var payloadlife = generatePayloadString(STAGE_1,"type_of_insurance","life");
+  var payloadProduct = generatePayloadString(STAGE_1,"type_of_insurance","life");//JSON.stringify({"key":"type_of_insurance","value":"product"});
+  var payloadHome = generatePayloadString(STAGE_1,"type_of_insurance","life");//JSON.stringify({"key":"type_of_insurance","value":"home"});
+  var payloadVehicle = generatePayloadString(STAGE_1,"type_of_insurance","life");//JSON.stringify({"key":"type_of_insurance","value":"vehicle"});
+  var payloadTravel = generatePayloadString(STAGE_1,"type_of_insurance","life");//JSON.stringify({"key":"type_of_insurance","value":"travel"});
 
   var messageData = {
     recipient: {
