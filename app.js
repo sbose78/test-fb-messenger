@@ -278,7 +278,9 @@ function receivedMessage(event) {
     console.log("Received echo for message %s and app %d with metadata %s", 
       messageId, appId, metadata);
     return;
-  } else if (quickReply) {
+  } 
+  else if (quickReply) {
+
     var quickReplyPayload = quickReply.payload;
     var payloadJSON = JSON.parse(quickReplyPayload.replace(/'/g,'"'));
 
@@ -286,8 +288,10 @@ function receivedMessage(event) {
     console.log("Quick reply for message %s with payload %s",
       messageId, payloadJSON.value);
 
-      printAllUsersData();
-      updateUserData(recipientID,payloadJSON.key,payloadJSON.value);
+      var stageProcessor = getStageProcessor(payloadJSON.current_stage);
+      stageProcessor(senderID,payloadJSON);
+
+
       sendTextMessage(senderID, "Quick reply tapped");
 
       var nextStageFunc = getNextStage(payloadJSON.current_stage);
@@ -842,19 +846,43 @@ Stage tracker
 const STAGE_1="1"
 const STAGE_2="2"
 
+
+function getAllStages(){
+  
+    var stages = {
+      "1": {
+        "send":sendInsuranceOptions,
+        "process": processInsuranceOptions
+      },
+      "2":{ 
+        "send":sendRefundOptions,
+        "process":processRefundOptions
+      }
+    };
+    return stages;
+}
+
 function getNextStage(currentStage) {
 
-    var stages = {
-      "1": sendInsuranceOptions,
-      "2": sendRefundOptions
-    }
-
+  var stages = getAllStages();
   var cStage = (parseInt(currentStage) + 1).toString();
   console.log(cStage)
-  var nextStageFunction = stages[cStage];
+  var nextStageInfo= stages[cStage];
+  var nextStageFunction = nextStageInfo["send"]
   console.log(nextStageFunction);
   console.log("Computed next stage");
   return nextStageFunction;
+}
+
+function getStageProcessor(current_stage){
+
+  var stages = getAllStages();
+  console.log(cStage)
+  var stageInfo= stages[current_stage];
+  var stageFunction = nextStageInfo["process"]
+  console.log(stageFunction);
+  console.log("Computed stage processor");
+  return stageFunction;
 }
 
 /*
@@ -862,6 +890,16 @@ function getNextStage(currentStage) {
   Send options for moneyback
 
 */
+
+function processRefundOptions(recipientID,payload){
+      printAllUsersData();
+      updateUserData(recipientID,payloadJSON.key,payloadJSON.value);
+}
+
+function processInsuranceOptions(recipientID,payload){
+    printAllUsersData();
+    updateUserData(recipientID,payloadJSON.key,payloadJSON.value);
+}
 
 function sendRefundOptions(recipientID){
 
