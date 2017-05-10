@@ -793,6 +793,11 @@ function sendTypingOff(recipientId) {
 
 
 function sendInsuranceOptions(recipientId){
+
+  var payloadProduct = JSON.stringify({"key":"type_of_insurance","value":"life"});
+
+
+
   var messageData = {
     recipient: {
       id: recipientId
@@ -803,27 +808,27 @@ function sendInsuranceOptions(recipientId){
         {
           "content_type":"text",
           "title":"Life",
-          "payload":"{key:\"type_of_insurance\",value:\"life\"}"
+          "payload":payloadProduct
         },
         {
           "content_type":"text",
           "title":"Product",
-          "payload":"{key:\"type_of_insurance\",value:\"life\"}"
+          "payload":payloadProduct
         },
         {
           "content_type":"text",
           "title":"Home",
-          "payload":"{key:\"type_of_insurance\",value:\"life\"}"
+          "payload":payloadProduct
         },
         {
           "content_type":"text",
           "title":"Vehicle",
-          "payload":"{key:\"type_of_insurance\",value:\"life\"}"
+          "payload":payloadProduct
         },
         {
           "content_type":"text",
           "title":"Travel",
-          "payload":"{key:\"type_of_insurance\",value:\"life\"}"
+          "payload":payloadProduct
         }
       ]
     }
