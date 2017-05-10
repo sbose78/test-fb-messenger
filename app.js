@@ -891,12 +891,12 @@ function getStageProcessor(current_stage){
 
 */
 
-function processRefundOptions(recipientID,payload){
+function processRefundOptions(recipientID,payloadJSON){
       printAllUsersData();
       updateUserData(recipientID,payloadJSON.key,payloadJSON.value);
 }
 
-function processInsuranceOptions(recipientID,payload){
+function processInsuranceOptions(recipientID,payloadJSON){
     printAllUsersData();
     updateUserData(recipientID,payloadJSON.key,payloadJSON.value);
 }
