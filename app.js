@@ -101,6 +101,9 @@ function printAllUsersData(){
 
 function updateUserData(userid,key,value){
    var userobject = datastore[userid]
+   if(userobject === undefined){
+     userobject = {};
+   }
    userobject[key] = value
    datastore[userid] = userobject
 }
