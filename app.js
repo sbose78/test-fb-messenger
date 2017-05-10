@@ -867,7 +867,7 @@ function sendRefundOptions(recipientID){
 
   var messageData = {
     recipient: {
-      id: recipientId
+      id: recipientID
     },
     message: {
       text: "Would you like your money back ?",
@@ -990,12 +990,6 @@ function callSendAPI(messageData,next) {
           console.log("Successfully called Send API for recipient %s", 
             recipientId);
           }
-
-          if ( next != undefined ){
-            console.log("Calling next ....")
-            next(recipientId);
-          }
-
     } else {
       console.error("Failed calling Send API", response.statusCode, response.statusMessage, body.error);
     }
