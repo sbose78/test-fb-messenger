@@ -845,8 +845,8 @@ const STAGE_2="2"
 function getNextStage(currentStage) {
 
     var stages = {
-      STAGE_1: sendInsuranceOptions,
-      STAGE_2: sendRefundOptions
+      "1": sendInsuranceOptions,
+      "2": sendRefundOptions
     }
 
   var cStage = (parseInt(currentStage) + 1).toString();
