@@ -868,10 +868,12 @@ function getNextStage(currentStage) {
   var cStage = (parseInt(currentStage) + 1).toString();
   console.log(cStage)
   var nextStageInfo= stages[cStage];
-  var nextStageFunction = nextStageInfo["send"]
-  console.log(nextStageFunction);
-  console.log("Computed next stage");
-  return nextStageFunction;
+  if ( nextStageInfo != undefined){
+    var nextStageFunction = nextStageInfo["send"]
+    console.log(nextStageFunction);
+    console.log("Computed next stage");
+    return nextStageFunction;
+  }
 }
 
 function getStageProcessor(current_stage){
@@ -879,10 +881,12 @@ function getStageProcessor(current_stage){
   var stages = getAllStages();
   console.log(current_stage)
   var stageInfo= stages[current_stage];
-  var stageFunction = stageInfo["process"]
-  console.log(stageFunction);
-  console.log("Computed stage processor");
-  return stageFunction;
+  if (stageInfo != undefined){
+    var stageFunction = stageInfo["process"]
+    console.log(stageFunction);
+    console.log("Computed stage processor");
+    return stageFunction;
+  }
 }
 
 /*
